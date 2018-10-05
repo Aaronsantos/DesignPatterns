@@ -2,5 +2,5 @@ package BuscOtel.Model
 
 abstract class FormaPagamento {
 
-    abstract  fun pagar(valor:Float): Boolean
+    abstract  fun pagar( reserva: Reserva): Boolean
 }

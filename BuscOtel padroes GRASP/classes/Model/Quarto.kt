@@ -5,41 +5,45 @@ import java.util.*
 class Quarto {
 
     private var numero:Int
-    private var precoDiaria:Float
     private var tipo: TipoQuarto
     private var reservas: ArrayList<Reserva>
     private var hotel: Hotel
 
 
-    constructor(num:Int, preco:Float, tipo:TipoQuarto, hotel:Hotel) {
+    constructor(num:Int, tipo:TipoQuarto, hotel:Hotel) {
 
         this.numero = num
-        this.precoDiaria = preco
         this.tipo = tipo
         this.reservas = ArrayList<Reserva>()
         this.hotel = hotel
     }
 
-    fun reservar(dataEntrada: Date, dataSaida: Date) {
+    fun reservar(dataEntrada: Date, dataSaida: Date, usuario: Usuario) {
 
-        var novaReserva: Reserva = Reserva(  Date(), dataEntrada, dataSaida, this)
+        var novaReserva: Reserva = Reserva(  Date(), dataEntrada, dataSaida, this, usuario)
         this.reservas.add(novaReserva)
+        usuario.addReserva(novaReserva)
     }
 
     fun verificaDisponibilidade(dataEntrada: Date, dataSaida: Date): Boolean {
 
         for( reserva:Reserva in this.reservas){
 
-            if( reserva.dataEntrada.equals(dataEntrada) )
+            if( reserva.getDataEntrada().equals(dataEntrada) )
                     return false
-            if (  reserva.dataSaida.after(dataEntrada) && reserva.dataEntrada.before(dataEntrada) )
+            if (  reserva.getDataSaida().after(dataEntrada) && reserva.getDataEntrada().before(dataEntrada) )
                 return false
-            if (reserva.dataEntrada.before(dataSaida) && reserva.dataSaida.after(dataEntrada) )
+            if (reserva.getDataEntrada().before(dataSaida) && reserva.getDataSaida().after(dataEntrada) )
                 return false
         }
 
         return true
 
+    }
+
+    fun cancelarReserva( reserva: Reserva) {
+
+        this.reservas.remove(reserva)
     }
 
     fun getNumero():Int {
@@ -51,14 +55,8 @@ class Quarto {
         this.numero = num
     }
 
-    fun getPrecoDiaria(): Float {
-
-        return this.precoDiaria
-    }
-
-    fun setPrecoDiaria(preco: Float) {
-
-        this.precoDiaria = preco;
+    fun getPrecoDiaria(): Double {
+        return this.hotel.getPrecoDiaria(this.tipo)
     }
 
 
