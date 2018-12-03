@@ -1,0 +1,14 @@
+1-Definição
+2-Motivação e problemática:
+  2.1-Dados e cases 
+3-Elementos:
+    3.1-Appshell
+    3.2-ServiceWorker
+    3.3-manifest
+    3.4-http services
+    3.5-device api
+4-Estudo de caso de arquitetura
+5-Considerações finais:
+    5.1-Pontos fortes do uso de PWA
+    5.2-Pontos fracos do uso de PWA 
+
