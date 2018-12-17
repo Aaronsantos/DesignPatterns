@@ -1,0 +1,16 @@
+{
+    "name": "Hello World PWA",
+    "short_name": "Hi",
+    "icons": [
+      {
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZ-R7BMPeabYq8z710iABidQdxaM5KTHsFuLi5uTSFOeEj48TpCw",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "start_url": "/index.html",
+    "gcm_sender_id": "103953800507",
+    "display": "standalone",
+    "background_color": "#FF9800",
+    "theme_color": "#FF9800"
+  }
